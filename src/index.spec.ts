@@ -1,13 +1,13 @@
-import { sayHello } from './index';
+import { sayHello } from "./index";
 
 afterEach(() => {
   jest.restoreAllMocks();
 });
 
-describe('sayHello', () => {
+describe("sayHello", () => {
   test(`should output 'Hello world!' to the console`, () => {
-    jest.spyOn(console, 'log').mockImplementation();
+    jest.spyOn(console, "log").mockImplementation();
     sayHello();
-    expect(console.log).toBeCalledWith('Hello world');
+    expect(console.log).toBeCalledWith("Hello world");
   });
 });
