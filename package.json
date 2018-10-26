@@ -6,9 +6,13 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
+    "build:watch": "onchange 'src/**/*.ts' -- npm run clean && tsc",
     "test": "jest",
-    "style": "prettier -s --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json -c tslint.json"
+    "test:watch": "onchange 'src/**/*.ts' -- jest",
+    "style": "prettier --write 'src/**/*.ts'",
+    "style:watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
+    "lint": "tslint -p tsconfig.json -c tslint.json --fix",
+    "lint:watch": "onchange 'src/**/*.ts' -- tslint -p tsconfig.json -c tslint.json --fix"
   },
   "repository": {
     "type": "git",
@@ -30,6 +34,7 @@
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
+    "onchange": "^5.0.2",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
     "ts-jest": "^23.10.4",
